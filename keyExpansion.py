@@ -2,6 +2,15 @@ import math
 import numpy as np
 import array as arr
 
+# variables
+# w = word size
+# r = rounds (changes size t of key table)
+# b = length of secret key
+# k[] = secret key array converted to binary of size b
+# p = magical constant
+# q = magical constatnt
+
+
 # size of word block 16, 32, or 64
 w = 16
 
@@ -12,7 +21,8 @@ r = 5
 b = 16
 
 # secret key not sure how this works
-k = []
+k = ["b", "l", "o", "c", "k"]
+
 
 # Eulers number
 e = math.e
@@ -35,34 +45,38 @@ q = Odd((g - 1) * 2**w)
 
 # cylic roations
 
-
-def RightRotate(A, K):
-    old = A
-    new = [0]*len(A)
-    for i in range(K):
-        new[0] = old[-1]
-        new[1:] = old[:-1]
-        old = new.copy()
-    return new
+# In-place rotates s towards left by d
 
 
-def LeftRotate(l, n):
-    return l[-n % len(l):] + l[:-n % len(l)]
+def leftrotate(s, d):
+    tmp = s[d:] + s[0: d]
+    return tmp
+
+# In-place rotates s
+# towards right by d
+
+
+def rightrotate(s, d):
+
+    return leftrotate(s, len(s) - d)
 
 
 # Key expansion
 
 # convert secret key from bytes to words
-l = []
 
 u = w/8
 
 # length of new array l
 c = b/u
 
+# initialize l with 0
+l = [0] * c
+
 i = b - 1
 while i >= 0:
-    l[i/u] = (l[i/u] << < 8) + k[i]
+    l[i/u] = leftrotate(l, 8) + k[i]
+    i = i - 1
 
 
 # size of s-table array
