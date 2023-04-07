@@ -5,10 +5,6 @@ import math
 # r = rounds (changes size t of key table)
 # b = length of secret key
 # k[] = secret key array converted to binary of size b
-<<<<<<< Updated upstream
-# p = magical constant
-# q = magical constatnt
-=======
 # s[] = expanded key table
 # t = size of s[]   2(r + 2)
 # l[] = array k[] but in size words instead of bytes
@@ -19,7 +15,6 @@ import math
 
 # r, g, b are each 8 bits = 24 bits total
 # A, B, C, D = 6 bits each
->>>>>>> Stashed changes
 
 
 # size of word block 16, 32, or 64
@@ -76,16 +71,10 @@ c = b//u
 l = [0] * c
 
 i = b - 1
-<<<<<<< Updated upstream
-while i >= 0:
-    l[i/u] = leftrotate(l, 8) + k[i]
-    i = i - 1
-=======
 for i in range(i, 0, -1):
     # this needs to append the binary of k[i] to l[i//u] but right now its just adding it
     l[i//u] = (l[i//u] << 8) + k[i]
     # print(l[i//u])
->>>>>>> Stashed changes
 
 
 # size of s-table array
@@ -109,13 +98,6 @@ j = 0
 a = 0
 b = 0
 
-<<<<<<< Updated upstream
-
-for k in (3 * (2 * r + 4)):  # or max(t, c)
-    s[i] = (s[i] + a + b) << < 3
-    a = s[i]
-    l[j] = (l[j] + a + b) << < (a + b)
-=======
 # x is dummy variable just run through 3 * max(t, c) times
 for x in range((3 * max(t, c))):
     s[i] = (s[i] + a + b) << 3
@@ -123,7 +105,6 @@ for x in range((3 * max(t, c))):
     # currently have overflow error here
     l[j] = (l[j] + a + b) << (a + b)
     b = l[j]
->>>>>>> Stashed changes
     i = (i + 1) % t
     j = (j + 1) % c
 
