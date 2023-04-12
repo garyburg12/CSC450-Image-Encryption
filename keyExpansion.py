@@ -49,10 +49,31 @@ def Odd(x):
 # magical constant p
 # p = Odd((e - 2) * 2**w)
 p = Odd((e - 2) * pow(2, w))
+print("p")
+print(p)
 
 # magical constant q
 # q = Odd((g - 1) * 2**w)
 q = Odd((g - 1) * pow(2, w))
+print("q")
+print(q)
+
+# modified integer to binary converter
+
+
+def binary(x):
+    rturn = ""
+    adding = 0
+    while (x > 0):
+        adding = x % 2
+        rturn = str(adding) + rturn
+        x = x // 2
+    rturn = str(rturn)
+    if len(rturn) > 8:
+        print("number to large(greater than 8 bits)")
+    while len(rturn) < 8:
+        rturn = "0"+rturn
+    return rturn
 
 # cylic roation is bit rotation, 16 << 2 = 64
 
@@ -68,13 +89,36 @@ u = w//8
 c = b//u
 
 # initialize l with 0, l contains words
-l = [0] * c
+l = ["x"] * c
 
 i = b - 1
-for i in range(i, 0, -1):
+
+for i in range(i, -1, -1):
     # this needs to append the binary of k[i] to l[i//u] but right now its just adding it
-    l[i//u] = (l[i//u] << 8) + k[i]
+    if l[i//u] == "x":
+        l[i//u] = binary(k[i])
+    else:
+        l[i//u] = l[i//u] + binary(k[i])
+    # l[i//u] = (l[i//u]) + k[i]
+    # l[i//u] = (bin(l[i//u] << 8)) + bin(k[i])
     # print(l[i//u])
+print(l[3])
+print(l[2])
+print(l[1])
+print(l[0])
+# instead of doing left bit rotation
+# convert each number in k to binary, store as a list of lists
+# first iteration, put list k[i] into l[i//u]
+# next iteration
+
+# for example, b = 8, w = 16, u = 2, k = [1, 5, 2, 8, 3, 4, 4, 2]
+# k = [00000001, 00000101, 00000010, 00001000, 00000011, 00000100, 00000100, 00000010]
+#
+# first iteration
+# l[7//2] ---> l[3] = 0 + k[7]        ---> l[3] = 00000010
+# l[6//2] ---> l[3] = 00000010 + k[6] ---> l[3] = 0000001000000100
+# l[5//2] ---> l[2] = 0 + k[5]        ---> l[2] = 00000100
+# l[4//2] ---> l[2] = 00000100 + k[4] ---> l[2] = 0000010000000011
 
 
 # size of s-table array
@@ -89,7 +133,10 @@ i = 1
 for i in range(i, t - 1):
     s.append(s[i-1] + q)
     # s[i] = s[(i-1)] + q
-
+print(s[0])
+print(s[1])
+print(s[2])
+print(s[3])
 
 # key mixing
 
