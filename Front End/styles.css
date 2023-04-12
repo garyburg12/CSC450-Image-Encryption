@@ -1,0 +1,27 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  text-align: center;
+  margin: 20px auto;
+}
+
+#imageContainer {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 500px;
+  max-height: 500px;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+#uploadedImage {
+  max-width: 100%;
+  max-height: 100%;
+}
