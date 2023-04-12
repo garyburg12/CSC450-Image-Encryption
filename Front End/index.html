@@ -9,25 +9,32 @@
     </head>
 
     <body>
-        <div class="input-section">
-            <p>Drag & drop images or <span class="browse">Browse </span></p>
-            <input type="file" class="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg">
-        </div>
-
-        <div id="display_image">
-        </div>
+        <h1>Image Encryption</h1>
+        <form>
+          <input type="file" id="imageUpload" accept=".jpg, .jpeg, .png" onchange="displayImage(event)">
+        </form>
+        <div id="imageContainer"></div>
     </body>
     
     <script>
-        let inputImage = document.querySelector(".input-section input");
-        let inputSection = document.querySelector(".input-section");
-        inputImage.addEventListener("change", ()=> {
-            const files = inputImage.files
-            displayImages();
-        });
+        function displayImage(event) {
+        const image = event.target.files[0];
+        const reader = new FileReader();
 
-        function displayImages(){
-            
+        reader.onload = function() {
+            const imageContainer = document.getElementById("imageContainer");
+            const uploadedImage = document.createElement("img");
+
+            uploadedImage.setAttribute("src", reader.result);
+            uploadedImage.setAttribute("id", "uploadedImage");
+
+            imageContainer.innerHTML = "";
+            imageContainer.appendChild(uploadedImage);
         }
+
+        reader.readAsDataURL(image);
+        }
+
+        
     </script>
 </html>
