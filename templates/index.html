@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, intial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet/styles.css') }}">
+        <title>Image Encryption</title>
+    </head>
+
+    <body>
+        <h1>Image Encryption</h1>
+        <form>
+          <input type="file" id="imageUpload" accept=".jpg, .jpeg, .png" onchange="displayImage(event)">
+        </form>
+        <div id="imageContainer">
+            <img id="uploadedImage">
+        </div>
+        <div id="submitButtonContainer">
+            <button id="submitButton">Submit</button>
+        </div>
+    </body>
+    
+    <script>
+        const submitButton = document.getElementById("submitButton");
+        
+        submitButton.addEventListener("click", function() {
+            encryptImage();
+        });
+
+        function displayImage(event) {
+            const image = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function() {
+                const imageContainer = document.getElementById("imageContainer");
+                const uploadedImage = document.getElementById("uploadedImage");
+
+                uploadedImage.setAttribute("src", reader.result);
+                uploadedImage.setAttribute("id", "uploadedImage");
+                uploadedImage.style.maxWidth = "100%";
+                uploadedImage.style.maxHeight = "100%";
+
+                imageContainer.innerHTML = "";
+                imageContainer.appendChild(uploadedImage);
+            }
+            reader.readAsDataURL(image);
+        }
+
+        function encryptImage(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", "http://172.17.0.2:5000/encryption", true);
+            xhttp.send();
+        };
+        
+    </script>
+</html>
