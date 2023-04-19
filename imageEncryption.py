@@ -1,4 +1,5 @@
 from PIL import Image
+import binaryFunctions
 # Import an image from directory:
 image = Image.open("grayscale.png")
   
