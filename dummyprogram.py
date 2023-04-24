@@ -1,4 +1,5 @@
 import math
+from binaryFunctions import *
 def binary(x):
     rturn = ""
     adding = 0
@@ -13,4 +14,11 @@ def binary(x):
         rturn="0"+rturn
     return rturn
 
-print((math.e-2) * (2**16))
+
+#print (binary(8))
+
+copy=convertToBinary(8)
+print(copy)
+print(lRotate(copy))
+print(rRotate(copy))
+print(copy)
