@@ -19,13 +19,27 @@
         <div id="submitButtonContainer">
             <button id="submitButton">Submit</button>
         </div>
+        <div id="output"></div>
     </body>
     
     <script>
         const submitButton = document.getElementById("submitButton");
-        
+        const imageUpload = document.getElementById("imageUpload");
+
         submitButton.addEventListener("click", function() {
-            encryptImage();
+            const formData = new FormData();
+            formData.append("image", imageUpload.files[0]);
+
+            fetch("/encryption", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const imageUrl = data.imageUrl;
+                window.location.href = `/result?imageUrl=${encodeURIComponent(imageUrl)}`;
+            })
+            .catch(error => console.error(error));
         });
 
         function displayImage(event) {
@@ -46,12 +60,6 @@
             }
             reader.readAsDataURL(image);
         }
-
-        function encryptImage(){
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("GET", "http://172.17.0.2:5000/encryption", true);
-            xhttp.send();
-        };
         
     </script>
 </html>
