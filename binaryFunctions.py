@@ -25,11 +25,15 @@ def convertToInt(x):
     return total
     
     
-def lRotate(x):
-    x=x[1:]+[x[0]]
+def lRotate(x, y):
+    y = y % len(x)
+    for i in range (0, y):
+        x=x[1:]+[x[0]]
     return x
-def rRotate(x):
-    x=[x[-1]]+x[0:-1]
+def rRotate(x, y):
+    y = y % len(x)
+    for i in range (0, y):
+        x=[x[-1]]+x[0:-1]
     return x
 def binxor(x, y):
     for i in range(0, len(x)):
