@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, intial-scale=1.0">
-        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet/styles.css') }}">
-        <title>Image Encryption</title>
-    </head>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet/styles.css') }}">
+    <title>Image Encryption</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
 
     <body>
         <h1>Image Encryption</h1>
@@ -41,19 +43,22 @@
             })
             .catch(error => console.error(error));
         });
+    });
+    submitButton.addEventListener("click", function () {
+        $('#imageForm').submit();
+    });
+    function displayImage(event) {
+        const image = event.target.files[0];
+        const reader = new FileReader();
 
-        function displayImage(event) {
-            const image = event.target.files[0];
-            const reader = new FileReader();
+        reader.onload = function () {
+            const imageContainer = document.getElementById("imageContainer");
+            const uploadedImage = document.getElementById("uploadedImage");
 
-            reader.onload = function() {
-                const imageContainer = document.getElementById("imageContainer");
-                const uploadedImage = document.getElementById("uploadedImage");
-
-                uploadedImage.setAttribute("src", reader.result);
-                uploadedImage.setAttribute("id", "uploadedImage");
-                uploadedImage.style.maxWidth = "100%";
-                uploadedImage.style.maxHeight = "100%";
+            uploadedImage.setAttribute("src", reader.result);
+            uploadedImage.setAttribute("id", "uploadedImage");
+            uploadedImage.style.maxWidth = "100%";
+            uploadedImage.style.maxHeight = "100%";
 
                 imageContainer.innerHTML = "";
                 imageContainer.appendChild(uploadedImage);
