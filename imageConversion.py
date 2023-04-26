@@ -13,6 +13,9 @@ pixel_map = image.load()
 def blockChain(x):
     width, height = x.size
     blocks = []
+    width, height = x.size
+    print (width)
+    print(height)
     for i in range(width):
         for j in range(height):
             width, height = x.size
