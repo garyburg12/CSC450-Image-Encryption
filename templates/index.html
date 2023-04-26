@@ -10,8 +10,14 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
-<body>
-    <h1>Image Encryption</h1>
+<body id="index">
+    <header>
+        <div id="login">
+            <button id="loginButton">Sign up or Login</button>
+        </div>
+    </header>
+
+    <h1 id="indexh">Image Encryption</h1>
     <form id="imageForm">
         <input type="file" id="imageUpload" accept=".jpg, .jpeg, .png" onchange="displayImage(event)">
     </form>
@@ -30,27 +36,34 @@
 <script>
     const submitButton = document.getElementById("submitButton");
 
+    $(document).ready(function () {
+        $('#loginButton').click(function () {
+            window.location.href = "registration";
+            console.log("login button clicked")
+        });
+    });
 
     $(document).ready(function () {
         $('#imageForm').submit(function (event) {
             event.preventDefault();
 
-            var formdata = new FormData($('#imageForm')[0])
 
-            $.ajax({
-                url: '/encryption',
-                type: 'POST',
-                data: formdata,
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                    $('#result').html(data);
-                }
-            });
         });
     });
     submitButton.addEventListener("click", function () {
         $('#imageForm').submit();
+        var formdata = new FormData($('#imageForm')[0])
+
+        $.ajax({
+            url: '/encryption',
+            type: 'POST',
+            data: formdata,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                $('#result').html(data);
+            }
+        });
     });
     function displayImage(event) {
         const image = event.target.files[0];

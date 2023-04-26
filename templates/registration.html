@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet/styles.css') }}">
+    <title>Image Encryption</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+
+
+    <h2 id="signup">Create an Account</h2>
+
+    <form>
+
+        <!-- First Name -->
+        <label for="fname" class="b">First name:</label><br>
+        <input type="text" id="fname" name="fname" placeholder="Enter you first name" class="a" ;>
+        <br>
+
+        <!-- Last Name -->
+        <label for="lname" class="b">Last name:</label><br>
+        <input type="text" id="lname" name="lname" placeholder="Enter your last name" class="a" ;>
+        <br />
+        <!--Email-->
+        <label for="Email" class="b">Email:</label><br>
+        <input type="text" id="email" name="email" placeholder="Enter your email address" class="a" ;>
+        <br />
+        <!-- UserName -->
+        <label for="Uname" class="b">Username:</label><br>
+        <input type="text" id="Uname" name="Uname" placeholder="Enter your username" class="a" ;>
+        <br />
+
+        <!-- Moblie -->
+        <label for="Moblie" class="b">Mobile:</label><br>
+        <input type="text" id="moblie" name="moblie" placeholder="only 10 digits are allowed" class="a" ;>
+        <br />
+        <!-- Password -->
+        <label for="Password" class="b">Password:</label><br>
+        <input type="Password" id="Password" name="Password" placeholder="Enter Password" class="a" ;>
+        <br />
+
+        <!-- Registered Button -->
+        <button type="submit" id="submitBtn">Submit</button>
+
+        <!--Already have an account-->
+        <div class="container signin">
+            <p>Already have an account?<a href="#">Sign in</a></p>
+        </div>
+
+        <!-- END OF FORM -->
+    </form>
+</body>
+
+</html>

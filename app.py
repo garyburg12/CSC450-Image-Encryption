@@ -12,11 +12,16 @@ def home():
     return render_template('index.html')
 
 
+@app.route('/registration')
+def registration():
+    return render_template('registration.html')
+
+
 @app.route('/encryption', methods=['POST'])
 def encryption():
-    image_file = request.files['image']
-    image_data = io.BytesIO(image_file.read())
-    image = Image.open(image_data)
+    image_data = request.files['image'].read()
+    # image_data = io.BytesIO(image_file)
+    # image = Image.open(image_data)
     # encryption
     # encrypted = imageEncryption(image)
     print(image_data)

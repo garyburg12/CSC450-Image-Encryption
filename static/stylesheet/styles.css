@@ -1,16 +1,20 @@
-body {
+body[id=index] {
   font-family: Arial, sans-serif;
   margin: 0;
 }
 
-h1 {
+h1[id=indexh] {
   text-align: center;
+  color: black;
+
 }
 
-form {
+form[id=imageForm] {
   text-align: center;
   margin: 20px auto;
 }
+
+
 
 #imageContainer {
   text-align: center;
@@ -30,4 +34,63 @@ form {
 #uploadedImage {
   max-width: 100%;
   max-height: 100%;
+}
+
+header {
+  background-color: black;
+}
+
+#loginButton {
+  background-color: black;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+#signup {
+  text-align: center;
+}
+
+.b {
+  margin: 20px auto;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: bold;
+}
+
+.a {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+.a:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+#submitBtn {
+  background-color: black;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+
+}
+
+#submitBtn:hover {
+  opacity: 1;
+}
+
+a {
+  color: dodgerblue;
 }
