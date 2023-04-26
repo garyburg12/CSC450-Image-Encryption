@@ -13,19 +13,21 @@ d = blockchain[3]
 
 
 # start encryption
-b = binadd(b, s[0])
-d = binadd(d, s[1])
-i = 1
-for i in range(i, r):
-    t = lRotate(binmult(b, (binadd(2 * b, 1))), math.log2(w))
+
+c = binsub(c, s[t - 1])
+a = binsub(a, s[t - 2])
+i = r
+for i in range(r, 1):
+    a = d
+    d = c
+    c = b
+    d = c
     u = lRotate(binmult(d, (binadd(2 * d, 1))), math.log2(w))
-    a = binadd(lRotate(binxor(a, t), u), s[2 * i])
-    c = binadd(lRotate(binxor(c, u), t), s[2 * i + 1])
-    a = b
-    b = c
-    c = d
-    d = a
-a = binadd(a, s[t - 2])
-c = binadd(c, s[t - 1])
+    t = lRotate(binmult(b, (binadd(2 * b, 1))), math.log2(w))
+    c = binxor(rRotate(binsub(c, s[2 * i + 1]), t), u)
+    a = binxor(rRotate(binsub(a, s[2 * i]), t), t)
+d = binsub(d, s[1])
+b = binsub(b, s[0])
+
 
 imageRebuild()
