@@ -18,7 +18,4 @@ def binary(x):
 #print (binary(8))
 
 copy=convertToBinary(8)
-print(copy)
-print(lRotate(copy))
-print(rRotate(copy))
-print(copy)
+print(binmult(copy, copy))

@@ -1,14 +1,14 @@
 #functions
 def convertToBinary(x):
-    rturn = []
+    binlist = []
     adding = 0
     while (x > 0):
         adding = x % 2
-        rturn=[adding] + rturn
+        binlist=[adding] + binlist
         x = x // 2
-    while len(rturn) < 8:
-        rturn = [0]+rturn
-    return rturn
+    while len(binlist) < 8:
+        binlist = [0]+binlist
+    return binlist
 def convertToInt(x):
     y=0
     for i in x:
@@ -19,8 +19,6 @@ def convertToInt(x):
     z=1
     total=0
     for i in range(len(x) - 1, y - 1, -1):
-        print (z)
-        print (total)
         if x[i] == 1:
            total+=z
         z=z*2
@@ -42,6 +40,9 @@ def binadd(x):
 def binsub(x):
     #binary subtraction
     x
-def binmult(x):
-    #convert bin to int 
-    x
+def binmult(x, y):
+    x = convertToInt(x)
+    y = convertToInt(y)
+    rvalue = x * y
+    rvalue = convertToBinary(rvalue)
+    return rvalue
