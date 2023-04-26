@@ -12,12 +12,17 @@ h1[id=indexh] {
 form[id=imageForm] {
   text-align: center;
   margin: 20px auto;
+  justify-content: center;
 }
 
+input[type=file] {
+  justify-content: center;
+}
 
 
 #imageContainer {
   text-align: center;
+  justify-content: center;
   margin: 20px auto;
   max-width: 500px;
   max-height: 500px;
