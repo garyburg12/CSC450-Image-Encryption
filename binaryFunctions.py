@@ -38,13 +38,13 @@ def binxor(x, y):
         else:
             x[i]=1
     return x
-def binadd(x):
+def binadd(x, y):
     x = convertToInt(x)
     y = convertToInt(y)
     rvalue = x + y
     rvalue = convertToBinary(rvalue)
     return rvalue
-def binsub(x):
+def binsub(x, y):
     x = convertToInt(x)
     y = convertToInt(y)
     rvalue = x - y
