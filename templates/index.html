@@ -43,10 +43,7 @@
             })
             .catch(error => console.error(error));
         });
-    });
-    submitButton.addEventListener("click", function () {
-        $('#imageForm').submit();
-    });
+
     function displayImage(event) {
         const image = event.target.files[0];
         const reader = new FileReader();
