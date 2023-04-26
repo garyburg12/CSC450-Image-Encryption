@@ -26,16 +26,15 @@ def convertToInt(x):
         z = z*2
     return total
 
-
 def lRotate(x, y):
-    for i in range(0, y):
-        x = x[1:]+[x[0]]
+    y = y % len(x)
+    for i in range (0, y):
+        x=x[1:]+[x[0]]
     return x
-
-
 def rRotate(x, y):
-    for i in range(0, y):
-        x = [x[-1]]+x[0:-1]
+    y = y % len(x)
+    for i in range (0, y):
+        x=[x[-1]]+x[0:-1]
     return x
 
 
