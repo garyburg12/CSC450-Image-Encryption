@@ -18,4 +18,5 @@ def binary(x):
 #print (binary(8))
 
 copy=convertToBinary(8)
-print(binmult(copy, copy))
+copy2=convertToBinary(247)
+print(binxor(copy, copy2))
