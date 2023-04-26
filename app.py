@@ -4,9 +4,8 @@ from io import BytesIO
 import os
 import base64
 import io
-import imageEncryption
-app = Flask(__name__)
 
+app = Flask(__name__)
 
 @app.route("/")
 def home():
