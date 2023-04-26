@@ -1,6 +1,7 @@
 from PIL import Image
 from binaryFunctions import *
 from keyExpansion import *
+from imageConversion import *
 # Import an image from directory:
 image = Image.open("grayscale.png")
 
@@ -28,4 +29,4 @@ for i in range(i, r):
 a = binadd(a, s[t - 2])
 c = binadd(c, s[t - 1])
 
-imageRebuild()
+# imageRebuild()
