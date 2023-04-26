@@ -69,3 +69,10 @@ def binmult(x, y):
     rvalue = x * y
     rvalue = convertToBinary(rvalue)
     return rvalue
+
+def multmod2(x,y):
+    x = convertToInt(x)
+    y = convertToInt(y)
+    rvalue = (x * y) % (2 ^ 16)
+    rvalue = convertToBinary(rvalue)
+    return rvalue
