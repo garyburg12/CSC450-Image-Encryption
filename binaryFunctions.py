@@ -33,15 +33,25 @@ def rRotate(x, y):
     for i in range (0, y):
         x=[x[-1]]+x[0:-1]
     return x
-def binxor(x):
-    #XOR function
-    x
+def binxor(x, y):
+    for i in range(0, len(x)):
+        if x[i] == y[i]:
+            x[i]=0
+        else:
+            x[i]=1
+    return x
 def binadd(x):
-    #binary addition
-    x
+    x = convertToInt(x)
+    y = convertToInt(y)
+    rvalue = x + y
+    rvalue = convertToBinary(rvalue)
+    return rvalue
 def binsub(x):
-    #binary subtraction
-    x
+    x = convertToInt(x)
+    y = convertToInt(y)
+    rvalue = x - y
+    rvalue = convertToBinary(rvalue)
+    return rvalue
 def binmult(x, y):
     x = convertToInt(x)
     y = convertToInt(y)
