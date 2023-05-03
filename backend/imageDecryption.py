@@ -14,8 +14,8 @@ d = blockchain[3]
 
 # start encryption
 
-c = binsub(c, s[t - 1])
-a = binsub(a, s[t - 2])
+c = binsub(c, s[m - 1])
+a = binsub(a, s[m - 2])
 i = r
 for i in range(r, 1):
     a = d
