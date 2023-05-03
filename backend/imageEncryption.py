@@ -17,14 +17,14 @@ d = blockchain[3]
 # start encryption
 b = binadd(b, s[0])
 d = binadd(d, s[1])
-i = 1
+i = 1  # we had this at 1 before
 for i in range(i, r):
     # t = (B x (2 * B + 1)) <<< log(w)
     t = lRotate(multmod2(b, binadd(binmult(convertToBinary(2), b),
                 convertToBinary(1))), int(math.log2(w)))
 
     # u = (D X (2 * D + 1)) <<< log(w)
-    u = lRotate(multmod2(b, binadd(binmult(convertToBinary(2), b),
+    u = lRotate(multmod2(d, binadd(binmult(convertToBinary(2), d),
                 convertToBinary(1))), int(math.log2(w)))
     print(t)
     # A = ((A ^ t) <<< u) + S[2 * i]
@@ -33,10 +33,13 @@ for i in range(i, r):
 
     # C = ((C ^ u) <<< t) + S[2 * i + 1]
     c = binadd(lRotate(binxor(c, u), convertToInt(t)), s[2 * i + 1])
+
+    temp = a
+
     a = b
     b = c
     c = d
-    d = a
+    d = temp
 a = binadd(a, s[m - 2])
 c = binadd(c, s[m - 1])
 

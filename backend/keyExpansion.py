@@ -23,7 +23,8 @@ w = 16
 
 
 # number of rounds was 5
-r = 2
+r = 6
+# was 2
 
 # key length
 b = 8
