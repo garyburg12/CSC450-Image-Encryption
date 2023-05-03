@@ -26,19 +26,26 @@ def convertToInt(x):
         z = z*2
     return total
 
+
 def lRotate(x, y):
     y = y % len(x)
-    for i in range (0, y):
-        x=x[1:]+[x[0]]
+    for i in range(0, y):
+        x = x[1:]+[x[0]]
     return x
+
+
 def rRotate(x, y):
     y = y % len(x)
-    for i in range (0, y):
-        x=[x[-1]]+x[0:-1]
+    for i in range(0, y):
+        x = [x[-1]]+x[0:-1]
     return x
 
 
 def binxor(x, y):
+    # adding padding incase y is shorter than x
+    while len(y) < len(x):
+        y = [0]+y
+
     for i in range(0, len(x)):
         if x[i] == y[i]:
             x[i] = 0
@@ -70,7 +77,8 @@ def binmult(x, y):
     rvalue = convertToBinary(rvalue)
     return rvalue
 
-def multmod2(x,y):
+
+def multmod2(x, y):
     x = convertToInt(x)
     y = convertToInt(y)
     rvalue = (x * y) % (2 ^ 16)
