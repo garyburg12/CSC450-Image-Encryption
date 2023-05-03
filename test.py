@@ -12,4 +12,4 @@ for i in range(0, b):
     k[i] = convertToBinary(k[i])
 
 # print(k)
-print(convertToBinary(0))
+# print(convertToBinary(0))
