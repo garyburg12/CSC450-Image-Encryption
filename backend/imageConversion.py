@@ -1,16 +1,17 @@
 from PIL import Image
 from binaryFunctions import *
 # Import an image from directory:
-# image = Image.open("circle.png")
+image = Image.open("test.png")
 
 # Extracting pixel map:
-# pixel_map_loaded = image.load()
+pixel_map_loaded = image.load()
 
 # Extracting the width and height
 # of the image:
 
 
 def blockChain(x):
+    print("running BlockChain")
     blocks = []
     width, height = x.size
     print(width)
@@ -19,13 +20,13 @@ def blockChain(x):
         for j in range(height):
             width, height = x.size
             # getting the RGB pixel value.
-            r, g, b = x.getpixel((i, j))
+            r, g, b, banana = x.getpixel((i, j))
 
             r = convertToBinary(r)
             g = convertToBinary(g)
             b = convertToBinary(b)
             pixel = r + g + b
-            blocks = blocks + pixel
+            blocks.extend(pixel)
     size = len(blocks)//4
 
     A = blocks[0:size]
@@ -40,25 +41,27 @@ def blockChain(x):
 
 
 def rebuild(x, imageuse):
+    print("rebuilding")
     i = 0
     j = 0
+    height, width = imageuse.size
+    pixel_map = imageuse.load()
     for y in x:
         for z in range(0, len(y), 24):
             r = y[z:z+8]
             g = y[z+8:z+16]
             b = y[z+16:z+24]
-            pixel_map = imageuse.load()
-            height, width = imageuse.size
+            
             pixel_map[i, j] = convertToInt(r), convertToInt(g), convertToInt(b)
-            i = (i+1) % width
-            if (i == 0):
-                j += 1
+            j = (j+1) % width
+            if (j == 0):
+                i += 1
 
 
-# listed = blockChain(image)
-# rebuild(listed, image)
+listed = blockChain(image)
+rebuild(listed, image)
 
 # Saving the final output
 
 # as "grayscale.png":
-# image.save("grayscale.png")
+image.save("rebuilt.png")
