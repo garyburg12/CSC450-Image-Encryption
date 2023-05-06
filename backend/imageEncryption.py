@@ -4,10 +4,14 @@ from binaryFunctions import *
 from keyExpansion import *
 from imageConversion import *
 # Import an image from directory:
-image = Image.open("checker.png")
+# image = Image.open("checker.png")
+image = Image.open("100x100.png")
 
+print("starting block chain")
 blockchain = blockChain(image)
 
+# print("block chain")
+# print(blockchain)
 a = blockchain[0]
 b = blockchain[1]
 c = blockchain[2]
@@ -15,10 +19,11 @@ d = blockchain[3]
 
 
 # start encryption
+print("starting encryption")
 b = binadd(b, s[0])
 d = binadd(d, s[1])
 i = 1  # we had this at 1 before
-for i in range(i, r):
+for i in range(i, r+1):
     # t = (B x (2 * B + 1)) <<< log(w)
     t = lRotate(multmod2(b, binadd(binmult(convertToBinary(2), b),
                 convertToBinary(1))), int(math.log2(w)))
@@ -32,7 +37,7 @@ for i in range(i, r):
     # changed u to convertToInt(u) and changed t in the one below
 
     # C = ((C ^ u) <<< t) + S[2 * i + 1]
-    c = binadd(lRotate(binxor(c, u), convertToInt(t)), s[2 * i + 1])
+    c = binadd(lRotate(binxor(c, u), convertToInt(t)), s[(2 * i) + 1])
 
     temp = a
 
@@ -67,9 +72,15 @@ c = binadd(c, s[m - 1])
 
 encryptedChain = [a, b, c, d]
 
+# print("encrypted")
+# print(encryptedChain)
+
 # create a new image
-im = Image.new(mode="RGB", size=(4, 4))
+# im = Image.new(mode="RGB", size=(4, 4))
+# im = Image.new(mode="RGB", size=(3, 3))
 
-rebuild(encryptedChain, im)
+# rebuild(encryptedChain, im)
+print("starting rebuild")
+rebuild(encryptedChain, image)
 
-im.save("encryptedImage.png")
+image.save("encryptedImage.png")

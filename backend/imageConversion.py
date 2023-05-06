@@ -1,26 +1,26 @@
 from PIL import Image
 from binaryFunctions import *
 # Import an image from directory:
-image = Image.open("test.png")
+# image = Image.open("black2x2.png")
 
 # Extracting pixel map:
-pixel_map_loaded = image.load()
+# pixel_map_loaded = image.load()
 
 # Extracting the width and height
 # of the image:
 
 
 def blockChain(x):
-    print("running BlockChain")
+    # print("running BlockChain")
     blocks = []
     width, height = x.size
-    print(width)
-    print(height)
+    # print(width)
+    # print(height)
     for i in range(width):
         for j in range(height):
             width, height = x.size
             # getting the RGB pixel value.
-            r, g, b, banana = x.getpixel((i, j))
+            r, g, b = x.getpixel((i, j))
 
             r = convertToBinary(r)
             g = convertToBinary(g)
@@ -41,7 +41,7 @@ def blockChain(x):
 
 
 def rebuild(x, imageuse):
-    print("rebuilding")
+    # print("rebuilding")
     i = 0
     j = 0
     height, width = imageuse.size
@@ -51,17 +51,18 @@ def rebuild(x, imageuse):
             r = y[z:z+8]
             g = y[z+8:z+16]
             b = y[z+16:z+24]
-            
+
             pixel_map[i, j] = convertToInt(r), convertToInt(g), convertToInt(b)
             j = (j+1) % width
             if (j == 0):
                 i += 1
 
 
-listed = blockChain(image)
-rebuild(listed, image)
+# listed = blockChain(image)
+# twobytwo = Image.new(mode="RGB", size=(2, 2))
+# rebuild(listed, twobytwo)
 
 # Saving the final output
 
 # as "grayscale.png":
-image.save("rebuilt.png")
+# image.save("new2x2.png")

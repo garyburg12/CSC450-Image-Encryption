@@ -19,7 +19,7 @@ from binaryFunctions import *
 
 
 # size of word block 16, 32, or 64
-w = 16
+w = 32
 
 
 # number of rounds was 5
