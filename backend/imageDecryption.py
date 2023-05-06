@@ -5,6 +5,7 @@ from imageConversion import *
 # Import an image from directory:
 image = Image.open("encryptedImage.png")
 
+print("starting block chain")
 blockchain = blockChain(image)
 
 a = blockchain[0]
@@ -13,12 +14,12 @@ c = blockchain[2]
 d = blockchain[3]
 
 
-# start encryption
-
+# start decryption
+print("starting decryption")
 c = binsub(c, s[m - 1])
 a = binsub(a, s[m - 2])
 i = r
-for i in range(r, 1):
+for i in range(r, 0, -1):
     temp = d
     d = c
     c = b
@@ -34,10 +35,11 @@ for i in range(r, 1):
                 convertToBinary(1))), int(math.log2(w)))
 
     # C = ((C - S[2 * i + 1]) >>> t) ^ u
-    c = binxor(rRotate(binsub(c, s[2 * i + 1]), convertToInt(t)), u)
+    c = binxor(rRotate(binsub(c, s[(2 * i) + 1]), convertToInt(t)), u)
 
     # A = ((A - S[2 * i]) >>> u) ^ t
     a = binxor(rRotate(binsub(a, s[2 * i]), convertToInt(u)), t)
+    print("round finished")
 
 d = binsub(d, s[1])
 b = binsub(b, s[0])
@@ -46,8 +48,10 @@ b = binsub(b, s[0])
 decryptedChain = [a, b, c, d]
 
 # create a new image
-im = Image.new(mode="RGB", size=(4, 4))
+# im = Image.new(mode="RGB", size=(4, 4))
+im = Image.new(mode="RGB", size=(100, 100))
 
+print("starting rebuild")
 rebuild(decryptedChain, im)
 
 im.save("decryptedImage.png")
