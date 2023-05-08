@@ -19,11 +19,12 @@ from binaryFunctions import *
 
 
 # size of word block 16, 32, or 64
-w = 16
+w = 32
 
 
 # number of rounds was 5
-r = 2
+r = 6
+# was 2
 
 # key length
 b = 8
