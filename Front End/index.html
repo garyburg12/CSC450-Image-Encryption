@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, intial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Image Encryption</title>
+    </head>
+
+    <body>
+        <div class="input-section">
+            <p>Drag & drop images or <span class="browse">Browse </span></p>
+            <input type="file" class="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg">
+        </div>
+
+        <div id="display_image">
+        </div>
+    </body>
+    
+    <script>
+        let inputImage = document.querySelector(".input-section input");
+        let inputSection = document.querySelector(".input-section");
+        inputImage.addEventListener("change", ()=> {
+            const files = inputImage.files
+            displayImages();
+        });
+
+        function displayImages(){
+            
+        }
+    </script>
+</html>
