@@ -19,7 +19,7 @@ from binaryFunctions import *
 
 
 # size of word block 16, 32, or 64
-w = 32
+w = 24
 
 
 # number of rounds was 5
@@ -86,10 +86,18 @@ l = ["x"] * c
 
 i = b - 1
 for i in range(i, -1, -1):
-    if l[i//u] == "x":
-        l[i//u] = k[i]
+    print(i//u)
+    if l[(i//u) - 1] == "x":
+        l[(i//u) - 1] = k[i]
     else:
-        l[i//u] = l[i//u] + k[i]
+        l[(i//u) - 1] = l[(i//u) - 1] + k[i]
+
+# for i in range(i, -1, -1):
+#    print(i//u)
+#    if l[i//u] == "x":
+#        l[i//u] = k[i]
+#   else:
+#        l[i//u] = l[i//u] + k[i]
 
 # instead of doing left bit rotation
 # convert each number in k to binary, store as a list of lists
