@@ -25,13 +25,13 @@ d = binadd(d, s[1])
 i = 1  # we had this at 1 before
 for i in range(i, r+1):
     # t = (B x (2 * B + 1)) <<< log(w)
+    print("round finished")
     t = lRotate(multmod2(b, binadd(binmult(convertToBinary(2), b),
                 convertToBinary(1))), int(math.log2(w)))
 
     # u = (D X (2 * D + 1)) <<< log(w)
     u = lRotate(multmod2(d, binadd(binmult(convertToBinary(2), d),
                 convertToBinary(1))), int(math.log2(w)))
-    print(t)
     # A = ((A ^ t) <<< u) + S[2 * i]
     a = binadd(lRotate(binxor(a, t), convertToInt(u)), s[2 * i])
     # changed u to convertToInt(u) and changed t in the one below

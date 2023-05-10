@@ -4,10 +4,10 @@ def convertToBinary(x):
     adding = 0
     while (x > 0):
         adding = x % 2
-        binlist = [adding] + binlist
+        binlist.append(adding)
         x = x // 2
     while len(binlist) < 8:
-        binlist = [0]+binlist
+        binlist.append(0)
     return binlist
 
 
@@ -20,7 +20,7 @@ def convertToInt(x):
             break
     z = 1
     total = 0
-    for i in range(len(x) - 1, y - 1, -1):
+    for i in range(len(x)):
         if x[i] == 1:
             total += z
         z = z*2
@@ -42,7 +42,6 @@ def rRotate(x, y):
 
 
 def binxor(x, y):
-    # adding padding incase y is shorter than x
     while len(y) < len(x):
         y = [0]+y
 
