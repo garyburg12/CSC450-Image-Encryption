@@ -28,11 +28,11 @@ for i in range(r, 0, -1):
 
     # u = (D X (2 * D + 1)) <<< log(w)
     u = lRotate(multmod2(d, binadd(binmult(convertToBinary(2), d),
-                convertToBinary(1))), int(math.log2(w)))
+                convertToBinary(1))), int(math.log2(w) - 1))  # adding 1
 
     # t = (B x (2 * B + 1)) <<< log(w)
     t = lRotate(multmod2(b, binadd(binmult(convertToBinary(2), b),
-                convertToBinary(1))), int(math.log2(w)))
+                convertToBinary(1))), int(math.log2(w) - 1))  # adding 1
 
     # C = ((C - S[2 * i + 1]) >>> t) ^ u
     c = binxor(rRotate(binsub(c, s[(2 * i) + 1]), convertToInt(t)), u)

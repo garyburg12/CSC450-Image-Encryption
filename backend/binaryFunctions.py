@@ -44,6 +44,7 @@ def rRotate(x, y):
 def binxor(x, y):
     while len(y) < len(x):
         y = [0]+y
+        # y = y+[0] ask about this
 
     for i in range(0, len(x)):
         if x[i] == y[i]:
@@ -57,6 +58,8 @@ def binadd(x, y):
     x = convertToInt(x)
     y = convertToInt(y)
     rvalue = x + y
+    # added this for mod 2^w
+    # rvalue = (x + y) % (2 ^ 32)
     rvalue = convertToBinary(rvalue)
     return rvalue
 
@@ -65,6 +68,8 @@ def binsub(x, y):
     x = convertToInt(x)
     y = convertToInt(y)
     rvalue = x - y
+    # added this for mod 2^w
+    # rvalue = (x - y) % (2 ^ 32)
     rvalue = convertToBinary(rvalue)
     return rvalue
 
@@ -80,6 +85,7 @@ def binmult(x, y):
 def multmod2(x, y):
     x = convertToInt(x)
     y = convertToInt(y)
-    rvalue = (x * y) % (2 ^ 16)
+    # rvalue = (x * y) % (2 ^ 16) CHANGIN THIS LINE FOR NOW
+    rvalue = (x * y) % (2 ^ 24)
     rvalue = convertToBinary(rvalue)
     return rvalue
