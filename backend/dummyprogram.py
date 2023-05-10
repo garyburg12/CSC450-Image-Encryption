@@ -31,6 +31,6 @@ something = [3, 5, 4, 5, 7, 1]
 # print(something)
 
 lRotate(something, 3)
-print(something)
+print(lRotate(something, 3))
 # rRotate(something, 2)
 # print(something)
