@@ -42,7 +42,6 @@ def rRotate(x, y):
 
 
 def binxor(x, y):
-    # adding padding incase y is shorter than x
     while len(y) < len(x):
         y = [0]+y
         # y = y+[0] ask about this

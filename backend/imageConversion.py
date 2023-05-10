@@ -11,11 +11,9 @@ from binaryFunctions import *
 
 
 def blockChain(x):
-    # print("running BlockChain")
+    print("running BlockChain")
     blocks = []
     width, height = x.size
-    # print(width)
-    # print(height)
     for i in range(width):
         for j in range(height):
             width, height = x.size
