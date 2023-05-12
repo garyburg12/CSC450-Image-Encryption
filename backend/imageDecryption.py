@@ -1,9 +1,11 @@
 from PIL import Image
 from binaryFunctions import *
 from keyExpansion import *
+from imageConversion import *
 # Import an image from directory:
-image = Image.open("grayscale.png")
+image = Image.open("encryptedImage.png")
 
+print("starting block chain")
 blockchain = blockChain(image)
 
 a = blockchain[0]
@@ -12,22 +14,44 @@ c = blockchain[2]
 d = blockchain[3]
 
 
-# start encryption
-
-c = binsub(c, s[t - 1])
-a = binsub(a, s[t - 2])
+# start decryption
+print("starting decryption")
+c = binsub(c, s[m - 1])
+a = binsub(a, s[m - 2])
 i = r
-for i in range(r, 1):
-    a = d
+for i in range(r, 0, -1):
+    temp = d
     d = c
     c = b
-    d = c
-    u = lRotate(binmult(d, (binadd(2 * d, 1))), math.log2(w))
-    t = lRotate(binmult(b, (binadd(2 * b, 1))), math.log2(w))
-    c = binxor(rRotate(binsub(c, s[2 * i + 1]), t), u)
-    a = binxor(rRotate(binsub(a, s[2 * i]), t), t)
+    b = a
+    a = temp
+
+    # u = (D X (2 * D + 1)) <<< log(w)
+    u = lRotate(multmod2(d, binadd(binmult(convertToBinary(2), d),
+                convertToBinary(1))), int(math.log2(w) - 1))  # adding 1
+
+    # t = (B x (2 * B + 1)) <<< log(w)
+    t = lRotate(multmod2(b, binadd(binmult(convertToBinary(2), b),
+                convertToBinary(1))), int(math.log2(w) - 1))  # adding 1
+
+    # C = ((C - S[2 * i + 1]) >>> t) ^ u
+    c = binxor(rRotate(binsub(c, s[(2 * i) + 1]), convertToInt(t)), u)
+
+    # A = ((A - S[2 * i]) >>> u) ^ t
+    a = binxor(rRotate(binsub(a, s[2 * i]), convertToInt(u)), t)
+    print("round finished")
+
 d = binsub(d, s[1])
 b = binsub(b, s[0])
 
 
-imageRebuild()
+decryptedChain = [a, b, c, d]
+
+# create a new image
+# im = Image.new(mode="RGB", size=(4, 4))
+im = Image.new(mode="RGB", size=(100, 100))
+
+print("starting rebuild")
+rebuild(decryptedChain, im)
+
+im.save("decryptedImage.png")
