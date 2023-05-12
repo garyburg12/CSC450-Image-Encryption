@@ -10,48 +10,40 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
-<body>
-    <h1>Image Encryption</h1>
-    <form id="imageForm">
-        <input type="file" id="imageUpload" accept=".jpg, .jpeg, .png" onchange="displayImage(event)">
-    </form>
-    <div id="imageContainer">
-        <img id="uploadedImage">
-    </div>
-    <div id="submitButtonContainer">
-        <button id="submitButton">Submit</button>
-    </div>
-    <div id="progressBarContainer">
-        <div id="progressBar"></div>
-    </div>
-    <div id="result"></div>
-</body>
+    <body>
+        <h1>Image Encryption</h1>
+        <form>
+          <input type="file" id="imageUpload" accept=".jpg, .jpeg, .png" onchange="displayImage(event)">
+        </form>
+        <div id="imageContainer">
+            <img id="uploadedImage">
+        </div>
+        <div id="submitButtonContainer">
+            <button id="submitButton">Submit</button>
+        </div>
+        <div id="output"></div>
+    </body>
+    
+    <script>
+        const submitButton = document.getElementById("submitButton");
+        const imageUpload = document.getElementById("imageUpload");
 
-<script>
-    const submitButton = document.getElementById("submitButton");
+        submitButton.addEventListener("click", function() {
+            const formData = new FormData();
+            formData.append("image", imageUpload.files[0]);
 
-
-    $(document).ready(function () {
-        $('#imageForm').submit(function (event) {
-            event.preventDefault();
-
-            var formdata = new FormData($('#imageForm')[0])
-
-            $.ajax({
-                url: '/encryption',
-                type: 'POST',
-                data: formdata,
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                    $('#result').html(data);
-                }
-            });
+            fetch("/encryption", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const imageUrl = data.imageUrl;
+                window.location.href = `/result?imageUrl=${encodeURIComponent(imageUrl)}`;
+            })
+            .catch(error => console.error(error));
         });
-    });
-    submitButton.addEventListener("click", function () {
-        $('#imageForm').submit();
-    });
+
     function displayImage(event) {
         const image = event.target.files[0];
         const reader = new FileReader();
@@ -65,14 +57,11 @@
             uploadedImage.style.maxWidth = "100%";
             uploadedImage.style.maxHeight = "100%";
 
-            imageContainer.innerHTML = "";
-            imageContainer.appendChild(uploadedImage);
+                imageContainer.innerHTML = "";
+                imageContainer.appendChild(uploadedImage);
+            }
+            reader.readAsDataURL(image);
         }
-        reader.readAsDataURL(image);
-    }
-
-
-
-</script>
-
+        
+    </script>
 </html>
