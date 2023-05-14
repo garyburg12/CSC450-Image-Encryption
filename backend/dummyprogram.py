@@ -21,6 +21,10 @@ from binaryFunctions import *
 b = 6
 
 something = [3, 5, 4, 5, 7, 1]
+thing = [1, 4, 5]
+# print(binadd(something, thing))
+
+
 # for i in range(0, b):
 #    something[i] = convertToBinary(something[i])
 
@@ -32,5 +36,18 @@ something = [3, 5, 4, 5, 7, 1]
 
 lRotate(something, 3)
 print(lRotate(something, 3))
+
+# print(lRotate(something, 1))
+# print(rRotate(something, 1))
+# print(convertToBinary(2))
+# print(convertToInt(convertToBinary(2)))
 # rRotate(something, 2)
 # print(something)
+# x = convertToBinary(pow(2, 32))
+# y = convertToBinary(60000000000000000000)
+# print(len(x))
+# print(x)
+# print(y)
+# print(binxor(x, y))
+
+print(binmult(convertToBinary(6), convertToBinary(2)))
