@@ -19,12 +19,11 @@ from binaryFunctions import *
 
 
 # size of word block 16, 32, or 64
-w = 24
+w = 32
 
 
 # number of rounds was 5
-r = 6
-# was 2
+r = 3
 
 # key length
 b = 16
@@ -55,13 +54,24 @@ def Odd(x):
 
 
 # magical constant p
-p = convertToBinary(Odd((e - 2) * pow(2, w)) % 27)
+# was p = convertToBinary(Odd((e - 2) * pow(2, w)) % 27)
+p = convertToBinary(Odd((e - 2) * pow(2, w)))
 # print(p)
+p.pop()
+p.pop()
+# p.pop()
+# p.pop()
+print(len(p))
 
 
 # magical constant q
-q = convertToBinary(Odd((g - 1) * pow(2, w)) % 27)
-# print(q)
+# was q = convertToBinary(Odd((g - 1) * pow(2, w)) % 27)
+q = convertToBinary(Odd((g - 1) * pow(2, w)))
+q.pop()
+q.pop()
+# q.pop()
+# q.pop()
+print(len(q))
 
 #
 # --------------------------------------------------
@@ -85,19 +95,19 @@ c = b//u
 l = ["x"] * c
 
 i = b - 1
-for i in range(i, -1, -1):
-    print(i//u)
-    if l[(i//u) - 1] == "x":
-        l[(i//u) - 1] = k[i]
-    else:
-        l[(i//u) - 1] = l[(i//u) - 1] + k[i]
-
 # for i in range(i, -1, -1):
-#    print(i//u)
-#    if l[i//u] == "x":
-#        l[i//u] = k[i]
-#   else:
-#        l[i//u] = l[i//u] + k[i]
+#    # print(i//u)
+#    if l[(i//u) - 1] == "x":
+#        l[(i//u) - 1] = k[i]
+#    else:
+#        l[(i//u) - 1] = l[(i//u) - 1] + k[i]
+
+for i in range(i, -1, -1):
+    # print(i//u)
+    if l[i//u] == "x":
+        l[i//u] = k[i]
+    else:
+        l[i//u] = l[i//u] + k[i]
 
 # instead of doing left bit rotation
 # convert each number in k to binary, store as a list of lists
