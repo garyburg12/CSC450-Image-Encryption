@@ -1,6 +1,7 @@
 import math
 # functions
 
+#variable that holds the word size
 
 def convertToBinary(x):
     binlist = []
@@ -48,11 +49,8 @@ def rRotate(x, y):
 def binxor(x, y):
     while len(y) < len(x):
         y = [0]+y
-        # y = y+[0] ask about this
     while len(y) > len(x):
         x = [0]+x
-        # y = y+[0] ask about this
-
     for i in range(0, len(x)):
         if x[i] == y[i]:
             x[i] = 0
@@ -60,28 +58,10 @@ def binxor(x, y):
             x[i] = 1
     return x
 
-
-# def binadd(x, y):
-#    if len(x) < len(y):
-#        while len(x) < len(y):
-#            x = [0]+x
-#    if len(x) > len(y):
-#        while len(x) > len(y):
-#            y = [0]+y
-#
-#    rvalue = []
-#    for i in range(0, len(x)):
-#        rvalue[i] = x
-
-
-#    return y
-
 def binadd(x, y):
     x = convertToInt(x)
     y = convertToInt(y)
-    rvalue = x + y
-    # added this for mod 2^w
-    # rvalue = (x + y) % (2 ^ 32)
+    rvalue = (x + y) #% pow(2, 16) 
     rvalue = convertToBinary(rvalue)
     return rvalue
 
@@ -89,9 +69,7 @@ def binadd(x, y):
 def binsub(x, y):
     x = convertToInt(x)
     y = convertToInt(y)
-    rvalue = x - y
-    # added this for mod 2^w
-    # rvalue = (x - y) % (2 ^ 32)
+    rvalue = (x - y) #% pow(2, 16) 
     rvalue = convertToBinary(rvalue)
     return rvalue
 
@@ -107,8 +85,6 @@ def binmult(x, y):
 def multmod2(x, y):
     x = convertToInt(x)
     y = convertToInt(y)
-    # rvalue = (x * y) % (2 ^ 16) CHANGIN THIS LINE FOR NOW
-    # rvalue = (x * y)
-    rvalue = (x * y) % (2 ^ 32)
+    rvalue = (x * y) #% (pow(2, 16))
     rvalue = convertToBinary(rvalue)
     return rvalue

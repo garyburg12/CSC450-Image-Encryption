@@ -61,7 +61,7 @@ p.pop()
 p.pop()
 # p.pop()
 # p.pop()
-print(len(p))
+#print(len(p))
 
 
 # magical constant q
@@ -71,7 +71,7 @@ q.pop()
 q.pop()
 # q.pop()
 # q.pop()
-print(len(q))
+#print(len(q))
 
 #
 # --------------------------------------------------
@@ -168,4 +168,4 @@ for x in range((3 * max(m, c))):
     i = (i + 1) % m
     j = (j + 1) % c
 
-print(*s)
+#print(*s)
