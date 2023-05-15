@@ -12,16 +12,21 @@ blockchain = blockChain(image)
 
 # print("block chain")
 # print(blockchain)
-a = blockchain[0]
+log2size=2
+
+a = blockchain[0] 
 b = blockchain[1]
 c = blockchain[2]
 d = blockchain[3]
 
-# print(len(a))
-# print(len(b))
-# print(len(c))
-# print(len(d))
-print("finished block chain")
+while pow(2, log2size) < len(a):
+    log2size+=1
+log2size=pow(2, log2size)
+log2size=len(a)-i
+a=a+a[:i]
+b=b+b[:i]
+c=c+c[:i]
+d=d+d[:i]
 
 # start encryption
 print("starting encryption")
